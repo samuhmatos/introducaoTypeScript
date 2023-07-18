@@ -1,21 +1,13 @@
-import { Post } from "./interfaces";
-import { coffstack, lucas, vitor } from "./mocksData";
+import { Post, User } from "./interfaces";import { coffstack, comment, lucas, vitor } from "./mocksData";
 
-interface Page<Data> {
-  data: Data[];
-  count: number;
-  nextPage: number | null;
-  prevPage: number | null;
+//contrain
+//value user: User
+
+interface WithUser {
+  user: User;
+}
+function getAuthorName<Type extends WithUser>(value: Type): string {
+  return value.user.name;
 }
 
-function getUserList(): Page<Post> {
-  return {
-    count: 5,
-    data: [lucas, vitor],
-    nextPage: 2,
-    prevPage: null,
-  };
-}
-const users = getUserList();
-
-users.data[0];
+const name = getAuthorName(comment);
