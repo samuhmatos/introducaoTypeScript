@@ -1,13 +1,14 @@
-import { Post, User } from "./interfaces";import { coffstack, comment, lucas, vitor } from "./mocksData";
+import { Post, User } from "./interfaces";import { coffstack, comment, vitor } from "./mocksData";
 
-//contrain
-//value user: User
+export const lucas: User = {
+  name: "Lucas",
+  username: "lucas123",
+  email: "lucas123@gmail.com",
+};
 
-interface WithUser {
-  user: User;
+function getProperty<Type>(value: Type, key: keyof Type) {
+  return value[key];
 }
-function getAuthorName<Type extends WithUser>(value: Type): string {
-  return value.user.name;
-}
 
-const name = getAuthorName(comment);
+const value = getProperty(comment, "content");
+console.log(value);
