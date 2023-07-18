@@ -1,8 +1,21 @@
-import { coffstack } from "./mocksData";
+import { Post } from "./interfaces";
+import { coffstack, lucas, vitor } from "./mocksData";
 
-function indentify<Type>(value: Type): Type {
-  return value;
+interface Page<Data> {
+  data: Data[];
+  count: number;
+  nextPage: number | null;
+  prevPage: number | null;
 }
 
-const value = indentify(coffstack);
-console.log(value);
+function getUserList(): Page<Post> {
+  return {
+    count: 5,
+    data: [lucas, vitor],
+    nextPage: 2,
+    prevPage: null,
+  };
+}
+const users = getUserList();
+
+users.data[0];
