@@ -1,4 +1,4 @@
-function runTs(name) {
-  return "JavaScript: Hello " + name;
-}
-console.log(runTs("Samuel"));
+// Tipagem estática
+let message = () => console.log("Hello World");
+
+message();
