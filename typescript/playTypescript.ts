@@ -4,15 +4,25 @@ interface User {
   lastName: string;
 }
 
-// type User = {
-//     firstName: string;
-//     lastName: string;
+// interface Programmer extends User {
+//     favoriteLanguage: string; //TypeScript
+//     role: string; //Front-end | Back-end
 // }
 
-const person = { firstName: "John", lastName: "Silva", age: 36 };
+type Programmer = {
+  favoriteLanguage?: string; //TypeScript
+  role: string; //Front-end | Back-end
+} & User;
 
-function getFullName(user: User) {
-  return `${user.firstName} ${user.lastName}`;
+function getBio(programmer: Programmer) {
+  return `My name is ${programmer.firstName} ${programmer.lastName}. My favorite language is ${programmer.favoriteLanguage} and I work as a ${programmer.role}`;
 }
 
-console.log(getFullName(person));
+const programmer: Programmer = {
+  //favoriteLanguage: "TypeScript",
+  role: "Front-end",
+  firstName: "Samuel",
+  lastName: "Matos",
+};
+
+console.log(getBio(programmer));
